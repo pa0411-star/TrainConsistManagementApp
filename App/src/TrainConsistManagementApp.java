@@ -1,36 +1,29 @@
-import java.util.LinkedList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
         // Step 1: Welcome message
-        System.out.println("=== Train Consist Management App - UC4 ===");
+        System.out.println("=== Train Consist Management App - UC5 ===");
 
-        // Step 2: Initialize LinkedList for the train consist
-        LinkedList<String> trainConsist = new LinkedList<>();
+        // Step 2: Initialize LinkedHashSet to store train bogies
+        Set<String> trainFormation = new LinkedHashSet<>();
 
-        // Step 3: Add bogies to model a typical train sequence
-        trainConsist.add("Engine");
-        trainConsist.add("Sleeper");
-        trainConsist.add("AC");
-        trainConsist.add("Cargo");
-        trainConsist.add("Guard");
+        // Step 3: Attach bogies (duplicates will be ignored)
+        trainFormation.add("Engine");
+        trainFormation.add("Sleeper");
+        trainFormation.add("Cargo");
+        trainFormation.add("Guard");
 
-        System.out.println("\nInitial train consist: " + trainConsist);
+        // Attempt to attach a duplicate bogie
+        boolean added = trainFormation.add("Sleeper"); // This will return false
+        if (!added) {
+            System.out.println("\nDuplicate bogie 'Sleeper' ignored.");
+        }
 
-        // Step 4: Insert Pantry Car at position 2 (indexing starts at 0)
-        trainConsist.add(2, "Pantry Car");
-        System.out.println("\nAfter adding Pantry Car at position 2: " + trainConsist);
-
-        // Step 5: Remove first and last bogie
-        String removedFirst = trainConsist.removeFirst();
-        String removedLast = trainConsist.removeLast();
-
-        System.out.println("\nRemoved first bogie: " + removedFirst);
-        System.out.println("Removed last bogie: " + removedLast);
-
-        // Step 6: Display final train consist
-        System.out.println("\nFinal ordered train consist: " + trainConsist);
+        // Step 4: Display final formation
+        System.out.println("\nFinal train formation in insertion order:");
+        System.out.println(trainFormation);
     }
 }
