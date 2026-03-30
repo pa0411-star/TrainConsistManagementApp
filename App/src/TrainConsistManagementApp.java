@@ -1,27 +1,36 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
-
         // Step 1: Welcome message
-        System.out.println("=== Train Consist Management App - UC3 ===");
+        System.out.println("=== Train Consist Management App - UC4 ===");
 
-        // Step 2: Initialize HashSet for bogie IDs
-        Set<String> bogieIDs = new HashSet<>();
+        // Step 2: Initialize LinkedList for the train consist
+        LinkedList<String> trainConsist = new LinkedList<>();
 
-        // Step 3: Add bogie IDs (including duplicates)
-        bogieIDs.add("BG101");
-        bogieIDs.add("BG102");
-        bogieIDs.add("BG103");
-        bogieIDs.add("BG101"); // duplicate
-        bogieIDs.add("BG102"); // duplicate
+        // Step 3: Add bogies to model a typical train sequence
+        trainConsist.add("Engine");
+        trainConsist.add("Sleeper");
+        trainConsist.add("AC");
+        trainConsist.add("Cargo");
+        trainConsist.add("Guard");
 
-        // Step 4: Display unique bogie IDs
-        System.out.println("\nUnique bogie IDs in the train consist: " + bogieIDs);
+        System.out.println("\nInitial train consist: " + trainConsist);
 
-        // Step 5: Inform about automatic deduplication
-        System.out.println("\nNote: Duplicates were automatically ignored by HashSet.");
+        // Step 4: Insert Pantry Car at position 2 (indexing starts at 0)
+        trainConsist.add(2, "Pantry Car");
+        System.out.println("\nAfter adding Pantry Car at position 2: " + trainConsist);
+
+        // Step 5: Remove first and last bogie
+        String removedFirst = trainConsist.removeFirst();
+        String removedLast = trainConsist.removeLast();
+
+        System.out.println("\nRemoved first bogie: " + removedFirst);
+        System.out.println("Removed last bogie: " + removedLast);
+
+        // Step 6: Display final train consist
+        System.out.println("\nFinal ordered train consist: " + trainConsist);
     }
 }
