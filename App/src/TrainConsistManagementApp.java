@@ -1,37 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class TrainConsistManagementApp
-{
+public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
         // Step 1: Welcome message
-        System.out.println("=== Train Consist Management App - UC2 ===");
+        System.out.println("=== Train Consist Management App - UC3 ===");
 
-        // Step 2: Initialize Passenger Bogie List
-        List<String> passengerBogies = new ArrayList<>();
+        // Step 2: Initialize HashSet for bogie IDs
+        Set<String> bogieIDs = new HashSet<>();
 
-        // Step 3: Add bogies
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        // Step 3: Add bogie IDs (including duplicates)
+        bogieIDs.add("BG101");
+        bogieIDs.add("BG102");
+        bogieIDs.add("BG103");
+        bogieIDs.add("BG101"); // duplicate
+        bogieIDs.add("BG102"); // duplicate
 
-        // Step 4: Display list after insertion
-        System.out.println("\nPassenger bogies after addition: " + passengerBogies);
+        // Step 4: Display unique bogie IDs
+        System.out.println("\nUnique bogie IDs in the train consist: " + bogieIDs);
 
-        // Step 5: Remove a bogie (AC Chair)
-        passengerBogies.remove("AC Chair");
-        System.out.println("\nPassenger bogies after removing AC Chair: " + passengerBogies);
-
-        // Step 6: Check if Sleeper bogie exists
-        if (passengerBogies.contains("Sleeper")) {
-            System.out.println("\nSleeper bogie is present in the train.");
-        } else {
-            System.out.println("\nSleeper bogie is NOT present in the train.");
-        }
-
-        // Step 7: Display final list state
-        System.out.println("\nFinal passenger bogies: " + passengerBogies);
+        // Step 5: Inform about automatic deduplication
+        System.out.println("\nNote: Duplicates were automatically ignored by HashSet.");
     }
 }
